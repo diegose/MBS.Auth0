@@ -1,0 +1,31 @@
+﻿@model MBS.Auth0.Models.Auth0SettingsPart
+@{
+    var baseUri = new Uri(WorkContext.CurrentSite.BaseUrl);
+    var callbackUrl = new Uri(baseUri, Url.Action("Callback", "Login", new { area = "MBS.Auth0" })).ToString();
+}
+<fieldset>
+    <legend>@T("Auth0")</legend>
+    <ol style="list-style-type: decimal; padding-left: 20px;">
+        <li>@T("Setup or update existing Auth0 App:")&nbsp;<a href="https://app.auth0.com/#/applications">https://app.auth0.com/#/applications</a></li>
+        <li>@T("Put callback url to Auth0 App settings:")&nbsp;@Html.Link(callbackUrl, callbackUrl)</li>
+        <li>@T("Receive ClientId and ClientSecret from Auth0 App and put them into appropriate fields below")</li>
+    </ol>
+    <div>
+        <label for="@Html.FieldIdFor(m => m.Domain)">@T("Domain")</label>
+        @Html.TextBoxFor(m => m.Domain)
+        @Html.ValidationMessage("Domain", "*")
+        <span class="hint">@T("Enter Domain.")</span>
+    </div>
+    <div>
+        <label for="@Html.FieldIdFor(m => m.ClientId)">@T("Client Id")</label>
+        @Html.TextBoxFor(m => m.ClientId)
+        @Html.ValidationMessage("ClientId", "*")
+        <span class="hint">@T("Enter client id.")</span>
+    </div>
+    <div>
+        <label for="@Html.FieldIdFor(m => m.ClientSecret)">@T("Client Secret")</label>
+        @Html.PasswordFor(m => m.ClientSecret)
+        @Html.ValidationMessage("ClientSecret", "*")
+        <span class="hint">@T("Enter client secret. Leave empty to skip change.")</span>
+    </div>
+</fieldset>

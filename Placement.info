@@ -1,0 +1,4 @@
+<Placement>
+  <Place Parts_Auth0Settings="Content:1"/>
+  <Place Parts_Auth0Widget="Content:1.1"/>
+</Placement>

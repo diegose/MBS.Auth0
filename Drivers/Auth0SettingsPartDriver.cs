@@ -22,7 +22,7 @@ namespace MBS.Auth0.Drivers
             T = NullLocalizer.Instance;
         }
 
-        protected override string Prefix { get { return "FacebookSettings"; } }
+        protected override string Prefix { get { return "Auth0Settings"; } }
 
         protected override DriverResult Editor(Auth0SettingsPart part, dynamic shapeHelper)
         {
